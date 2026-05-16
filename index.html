@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotação Petrocar</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: transparent; padding: 20px; }
+  .form-wrap { max-width: 420px; margin: 0 auto; background: rgba(13,43,54,0.92); border-radius: 16px; padding: 28px 24px; border: 1px solid rgba(29,158,117,0.3); }
+  .form-title { color: #fff; font-size: 18px; font-weight: 600; margin-bottom: 6px; text-align: center; }
+  .form-sub { color: #1d9e75; font-size: 13px; text-align: center; margin-bottom: 24px; }
+  .form-group { margin-bottom: 16px; }
+  label { display: block; color: #a8c5bc; font-size: 13px; margin-bottom: 6px; }
+  input { width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(29,158,117,0.3); background: rgba(255,255,255,0.07); color: #fff; font-size: 15px; outline: none; transition: border 0.2s; }
+  input::placeholder { color: rgba(255,255,255,0.3); }
+  input:focus { border-color: #1d9e75; }
+  .btn { width: 100%; padding: 14px; background: #1d9e75; color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
+  .btn:hover { background: #0f6e56; }
+  .footer-txt { color: rgba(255,255,255,0.3); font-size: 11px; text-align: center; margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="form-wrap">
+  <p class="form-title">🛡️ Faça sua cotação gratuitamente</p>
+  <p class="form-sub">Preencha os dados e receba sua simulação no WhatsApp</p>
+
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" placeholder="Seu nome" />
+  </div>
+  <div class="form-group">
+    <label for="wpp">WhatsApp</label>
+    <input type="tel" id="wpp" placeholder="(21) 99999-9999" />
+  </div>
+  <div class="form-group">
+    <label for="placa">Placa do veículo</label>
+    <input type="text" id="placa" placeholder="ABC-1D23" maxlength="8" />
+  </div>
+  <div class="form-group">
+    <label for="modelo">Modelo e Ano do Veículo</label>
+    <input type="text" id="modelo" placeholder="Ex: Honda Civic 2022" />
+  </div>
+
+  <button class="btn" onclick="enviar()">💬 Quero minha cotação agora</button>
+  <p class="footer-txt">Petrocar · Associação de Benefícios Mútuos</p>
+</div>
+
+<script>
+function enviar() {
+  var nome = document.getElementById('nome').value.trim();
+  var wpp = document.getElementById('wpp').value.trim();
+  var placa = document.getElementById('placa').value.trim().toUpperCase();
+  var modelo = document.getElementById('modelo').value.trim();
+  if (!nome || !wpp || !placa || !modelo) {
+    alert('Por favor, preencha todos os campos.');
+    return;
+  }
+  var msg = 'Olá Marco! Vi seu site e quero fazer uma cotação 🚗\n\n'
+    + '👤 Nome: ' + nome + '\n'
+    + '📱 WhatsApp: ' + wpp + '\n'
+    + '🔑 Placa: ' + placa + '\n'
+    + '🚘 Modelo e Ano: ' + modelo;
+  window.location.href = 'https://wa.me/5521997292982?text=' + encodeURIComponent(msg);
+}
+</script>
+</body>
+</html>
